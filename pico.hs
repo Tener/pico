@@ -68,8 +68,8 @@ wakePart = do
              send "Waking up..."
              mapM_ (\ (host,mac) -> do
                       send ("> " ++ host)
-                      -- exitCode <- liftIO $ wake mac
-                      -- send (show exitCode)
+                      exitCode <- liftIO $ wake mac
+                      send (show exitCode)
                    ) macs
     ('!':_) -> send "Unknown command. See !help."
     _ -> return ()
